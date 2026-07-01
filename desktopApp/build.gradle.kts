@@ -17,7 +17,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "KotlinSandBox"
-            packageVersion = "1.0.0"
+            packageVersion = "0.1.0"
 
             linux {
                 iconFile.set(project.file("appIcons/LinuxIcon.png"))
