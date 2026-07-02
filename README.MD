@@ -17,10 +17,10 @@ The project is strictly separated into decoupled layers to ensure maximum render
 ## 🗺 Interactive Project Backlog
 
 ### 🧱 Phase 1: Foundation, Grid, and Window
-- [ ] **Project Initialization** — Set up the Compose Multiplatform Desktop environment.
-- [ ] **Grid Data Structure** — Create a flat `IntArray` and inline helper functions for 1D-to-2D coordinate transformation.
-- [ ] **Game Loop** — Implement an infinite simulation loop inside a `LaunchedEffect` targeting ~60 FPS.
-- [ ] **Scalable Rendering** — Render logical pixels onto the `Canvas` with custom viewport scaling.
+- [x] **Project Initialization** — Set up the Compose Multiplatform Desktop environment.
+- [x] **Grid Data Structure** — Create a flat `IntArray` and inline helper functions for 1D-to-2D coordinate transformation.
+- [x] **Game Loop** — Implement an infinite simulation loop inside a `LaunchedEffect` targeting ~60 FPS.
+- [x] **Scalable Rendering** — Render logical pixels onto the `Canvas` with custom viewport scaling.
 
 ### ⏳ Phase 2: Sand Physics (Mitigating Artifacts)
 - [ ] **Element Modeling** — Define core particle types: `EMPTY`, `SAND`, `WALL`.
