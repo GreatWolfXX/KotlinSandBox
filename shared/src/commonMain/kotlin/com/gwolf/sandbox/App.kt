@@ -13,9 +13,9 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinsandbox.sharedui.generated.resources.*
 import com.gwolf.sandbox.theme.AppTheme
 import com.gwolf.sandbox.theme.LocalThemeIsDark
+import kotlinsandbox.shared.generated.resources.*
 import kotlinx.coroutines.isActive
 import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.stringResource

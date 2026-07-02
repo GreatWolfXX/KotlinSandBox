@@ -5,9 +5,8 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.jvm)
 }
-
 dependencies {
-    implementation(project(":sharedUI"))
+    implementation(project(":shared"))
 }
 
 compose.desktop {
