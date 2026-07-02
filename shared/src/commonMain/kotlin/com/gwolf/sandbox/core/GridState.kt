@@ -1,4 +1,4 @@
-package core
+package com.gwolf.sandbox.core
 
 interface GridState {
     val width: Int

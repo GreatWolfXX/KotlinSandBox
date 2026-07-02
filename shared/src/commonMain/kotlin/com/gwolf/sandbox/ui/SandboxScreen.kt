@@ -1,4 +1,4 @@
-package com.gwolf.sandbox
+package com.gwolf.sandbox.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
