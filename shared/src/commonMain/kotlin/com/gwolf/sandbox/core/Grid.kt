@@ -1,5 +1,8 @@
 package com.gwolf.sandbox.core
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import kotlin.random.Random
 
 class Grid : GridState {
@@ -8,6 +11,9 @@ class Grid : GridState {
     override val height: Int = GRID_HEIGHT
 
     val grid = IntArray(width * height)
+
+    override var updateTrigger by mutableStateOf(0L)
+        private set
 
     inline fun getIndex(x: Int, y: Int): Int {
         return y * width + x
@@ -31,6 +37,10 @@ class Grid : GridState {
 
     override fun inBounds(x: Int, y: Int): Boolean {
         return x in 0 until width && y in 0 until height
+    }
+
+    override fun notifyPhysicsTick() {
+        updateTrigger++
     }
 
     init {

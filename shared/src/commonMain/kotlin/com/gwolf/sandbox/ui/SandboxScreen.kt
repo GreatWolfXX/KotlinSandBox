@@ -2,34 +2,35 @@ package com.gwolf.sandbox.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.withFrameNanos
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import com.gwolf.sandbox.core.Element
-import com.gwolf.sandbox.core.Engine
-import com.gwolf.sandbox.core.Grid
-import com.gwolf.sandbox.core.GridState
+import com.gwolf.sandbox.core.*
 import kotlinx.coroutines.isActive
 
 @Composable
 fun SandboxScreen() {
 
     val grid = remember { Grid() }
-    val engine = remember { Engine(grid) }
+    val physicsEngine = remember { PhysicsEngine(grid) }
+    val engine = remember { Engine(physicsEngine) }
+
+    var ticks by remember { mutableStateOf(0) }
 
     LaunchedEffect(Unit) {
-        var previousTimeNanos = System.nanoTime()
+        var previousFrameNanos: Long? = null
 
         while (isActive) {
             withFrameNanos { frameTimeNanos ->
-                val deltaTime = (frameTimeNanos - previousTimeNanos) / 1_000_000_000f
-                previousTimeNanos = frameTimeNanos
+                if (previousFrameNanos != null) {
+                    val deltaTime = (frameTimeNanos - previousFrameNanos!!) / 1_000_000_000f
 
-                engine.update(deltaTime)
+                    engine.update(deltaTime)
+                    ticks++
+                }
+
+                previousFrameNanos = frameTimeNanos
             }
         }
     }
@@ -40,6 +41,8 @@ fun SandboxScreen() {
 @Composable
 fun Grid(grid: GridState) {
     Canvas(modifier = Modifier.fillMaxSize()) {
+        grid.updateTrigger
+
         val scaleX = size.width / grid.width
         val scaleY = size.height / grid.height
 
