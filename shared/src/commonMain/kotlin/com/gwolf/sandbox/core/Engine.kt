@@ -1,8 +1,18 @@
 package com.gwolf.sandbox.core
 
-class Engine(private val gridState: GridState) {
+class Engine(
+    private val physicsEngineState: PhysicsEngineState
+) : EngineState {
 
-    fun update(deltaTime: Float) {
+    private var accumulatedTime = 0f
+    private val timeStep = 1f / 10f
 
+    override fun update(deltaTime: Float) {
+        accumulatedTime += deltaTime
+
+        while (accumulatedTime >= timeStep) {
+            physicsEngineState.updatePhysics()
+            accumulatedTime -= timeStep
+        }
     }
 }
